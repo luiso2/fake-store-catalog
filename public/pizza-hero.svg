@@ -1,0 +1,31 @@
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" fill="#FFF5E6"/>
+  
+  <!-- Pizza base -->
+  <circle cx="400" cy="300" r="250" fill="#F4A460"/>
+  
+  <!-- Sauce -->
+  <circle cx="400" cy="300" r="230" fill="#DC143C"/>
+  
+  <!-- Cheese -->
+  <circle cx="400" cy="300" r="210" fill="#FFDB58" opacity="0.8"/>
+  
+  <!-- Pepperoni slices -->
+  <circle cx="320" cy="220" r="35" fill="#8B0000"/>
+  <circle cx="480" cy="240" r="35" fill="#8B0000"/>
+  <circle cx="380" cy="300" r="35" fill="#8B0000"/>
+  <circle cx="450" cy="350" r="35" fill="#8B0000"/>
+  <circle cx="330" cy="380" r="35" fill="#8B0000"/>
+  
+  <!-- Basil leaves -->
+  <ellipse cx="370" cy="180" rx="20" ry="35" fill="#228B22" transform="rotate(-20 370 180)"/>
+  <ellipse cx="430" cy="180" rx="20" ry="35" fill="#228B22" transform="rotate(20 430 180)"/>
+  
+  <!-- Steam effects -->
+  <path d="M350 100 Q360 80 350 60" stroke="#E0E0E0" stroke-width="3" fill="none" opacity="0.5"/>
+  <path d="M400 90 Q410 70 400 50" stroke="#E0E0E0" stroke-width="3" fill="none" opacity="0.5"/>
+  <path d="M450 100 Q460 80 450 60" stroke="#E0E0E0" stroke-width="3" fill="none" opacity="0.5"/>
+  
+  <!-- Text overlay -->
+  <text x="400" y="500" font-family="Arial, sans-serif" font-size="32" font-weight="bold" text-anchor="middle" fill="#8B0000">Pizza Artesanal</text>
+</svg>

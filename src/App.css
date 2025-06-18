@@ -89,6 +89,17 @@ body {
   opacity: 0.95;
 }
 
+.hero-image {
+  max-width: 600px;
+  margin: 2rem auto 0;
+}
+
+.hero-image img {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.3));
+}
+
 .info-badges {
   display: flex;
   gap: 2rem;

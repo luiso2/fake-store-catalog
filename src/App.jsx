@@ -61,7 +61,7 @@ function App() {
         
         <div className="hero-image">
           <motion.img 
-            src="/pizza-hero.jpg" 
+            src="/pizza-hero.svg" 
             alt="Pizza deliciosa"
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}

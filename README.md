@@ -1,141 +1,205 @@
-# FakeStore Catalog
+# Pizzería Bella Italia - Catálogo Digital
 
-Una aplicación web simple construida con React y Vite que consume la API de FakeStore para mostrar un catálogo de productos.
+Un catálogo digital moderno y elegante para pizzería, construido con React, Vite y diseñado para facilitar pedidos a través de WhatsApp.
 
-## Características
+## 🍕 Características
 
-- 🛍️ Catálogo de productos con imágenes, precios y valoraciones
-- 🔍 Filtrado por categorías
-- 📱 Diseño responsive
-- 🚀 Construido con Vite para un desarrollo rápido
-- 🐳 Listo para Docker y despliegue en EasyPanel
+- **Catálogo Interactivo**: Navegación fluida por categorías (Pizzas, Bebidas, Postres, Entradas)
+- **Carrito de Compras**: Sistema completo con gestión de cantidades
+- **Integración WhatsApp**: Los pedidos se envían directamente por WhatsApp con el detalle completo
+- **Diseño Responsive**: Optimizado para móviles, tablets y desktop
+- **Animaciones Suaves**: Construido con Framer Motion para una experiencia premium
+- **Tema Italiano**: Colores y diseño inspirados en la bandera italiana
 
-## Tecnologías Utilizadas
+## 🚀 Tecnologías
 
-- React 18
-- Vite
-- Axios para peticiones HTTP
-- CSS moderno con variables CSS
-- Docker para containerización
+- **React 18** - Framework de UI
+- **Vite** - Build tool ultrarrápido
+- **Framer Motion** - Animaciones fluidas
+- **Zustand** - Estado global simple
+- **React Icons** - Iconografía consistente
+- **Docker** - Containerización lista para producción
 
-## Instalación Local
+## 📱 Funcionalidades
 
-1. Clona el repositorio:
+### Para Clientes
+- Ver menú completo con fotos y descripciones
+- Filtrar por categorías
+- Agregar productos al carrito
+- Modificar cantidades
+- Realizar pedido por WhatsApp con un click
+
+### Para el Negocio
+- Fácil actualización de productos
+- Sin necesidad de procesar pagos
+- Pedidos llegan directamente a WhatsApp
+- Diseño profesional que mejora la imagen del negocio
+
+## 🛠️ Instalación Local
+
+1. **Clonar el repositorio**
 ```bash
 git clone [tu-repositorio]
 cd easy-panel-sample
 ```
 
-2. Instala las dependencias:
+2. **Instalar dependencias**
 ```bash
 npm install
 ```
 
-3. Crea un archivo `.env` basándote en `.env.example`:
+3. **Configurar variables de entorno**
 ```bash
 cp .env.example .env
 ```
 
-4. Ejecuta el proyecto en modo desarrollo:
+4. **Ejecutar en desarrollo**
 ```bash
 npm run dev
 ```
 
-La aplicación estará disponible en `http://localhost:5173`
+## 🐳 Docker
 
-## Construcción para Producción
-
+### Construir imagen
 ```bash
-npm run build
+docker build -t pizzeria-bella-italia .
 ```
 
-Los archivos compilados estarán en la carpeta `dist/`
-
-## Docker
-
-### Construir la imagen:
+### Ejecutar contenedor
 ```bash
-docker build -t fakestore-catalog .
+docker run -p 3000:3000 pizzeria-bella-italia
 ```
 
-### Ejecutar el contenedor:
-```bash
-docker run -p 3000:3000 fakestore-catalog
-```
+## 📦 Despliegue en EasyPanel
 
-La aplicación estará disponible en `http://localhost:3000`
+1. **Preparar el código**
+   - Hacer push a GitHub
+   - Asegurarse que el Dockerfile esté en la raíz
 
-## Despliegue en EasyPanel
-
-1. **Crear un nuevo proyecto en EasyPanel**
-   - Ve a tu dashboard de EasyPanel
-   - Crea un nuevo proyecto
-
-2. **Configurar el proyecto**
-   - Selecciona "Deploy from GitHub"
-   - Conecta tu repositorio
-   - EasyPanel detectará automáticamente el Dockerfile
-
-3. **Variables de Entorno**
-   - En la configuración del proyecto, agrega:
-     ```
-     VITE_API_URL=https://fakestoreapi.com
-     ```
-
-4. **Configurar el Puerto**
+2. **En EasyPanel**
+   - Crear nueva aplicación
+   - Conectar repositorio GitHub
    - Puerto: 3000
-   - Protocolo: HTTP
+   - Variables de entorno: No requeridas
 
-5. **Dominio**
-   - Puedes usar el dominio proporcionado por EasyPanel o configurar uno personalizado
+3. **Deploy**
+   - EasyPanel detectará el Dockerfile automáticamente
+   - Click en "Deploy"
 
-6. **Deploy**
-   - Haz clic en "Deploy"
-   - EasyPanel construirá y desplegará tu aplicación automáticamente
+## 📝 Personalización
 
-## Estructura del Proyecto
+### Cambiar datos del negocio
+
+Editar `src/App.jsx`:
+- Nombre del negocio
+- Número de WhatsApp
+- Horarios
+- Información de contacto
+
+### Modificar productos
+
+Editar `src/data/pizzaData.js`:
+- Agregar/eliminar productos
+- Cambiar precios
+- Actualizar descripciones
+- Modificar categorías
+
+### Cambiar colores
+
+Editar `src/App.css`:
+```css
+:root {
+  --primary-red: #c8102e;    /* Rojo italiano */
+  --primary-green: #00a651;  /* Verde italiano */
+  --secondary-yellow: #ffc72c; /* Amarillo acento */
+}
+```
+
+## 🏗️ Estructura del Proyecto
 
 ```
-easy-panel-sample/
+pizzeria-bella-italia/
 ├── src/
 │   ├── components/
-│   │   ├── ProductCard.jsx
-│   │   └── ProductCard.css
-│   ├── App.jsx
-│   ├── App.css
-│   ├── main.jsx
-│   └── index.css
+│   │   ├── Header.jsx         # Navegación principal
+│   │   ├── CategoryFilter.jsx # Filtros de categoría
+│   │   ├── ProductCard.jsx    # Tarjeta de producto
+│   │   └── Cart.jsx          # Carrito de compras
+│   ├── data/
+│   │   └── pizzaData.js      # Datos de productos
+│   ├── store/
+│   │   └── useStore.js       # Estado global (Zustand)
+│   ├── App.jsx               # Componente principal
+│   └── App.css               # Estilos principales
 ├── public/
-├── .env.example
-├── .gitignore
-├── Dockerfile
-├── index.html
-├── package.json
-├── vite.config.js
-└── README.md
+│   ├── pizza-icon.svg        # Favicon
+│   └── pizza-hero.svg        # Imagen hero
+├── Dockerfile                # Configuración Docker
+├── package.json             # Dependencias
+└── vite.config.js          # Configuración Vite
 ```
 
-## Scripts Disponibles
+## 🎨 Capturas de Pantalla
 
-- `npm run dev` - Ejecuta el servidor de desarrollo
-- `npm run build` - Construye la aplicación para producción
-- `npm run preview` - Vista previa de la construcción de producción
+### Desktop
+- Hero section con información del negocio
+- Grid de productos responsivo
+- Carrito lateral deslizante
 
-## API
+### Mobile
+- Diseño optimizado para táctil
+- Botón flotante de carrito
+- Navegación simplificada
 
-La aplicación consume la [FakeStore API](https://fakestoreapi.com/), que proporciona:
-- Lista de productos
-- Categorías
-- Detalles de productos incluyendo precios, imágenes y valoraciones
+## 📞 Integración WhatsApp
 
-## Contribuir
+El sistema genera automáticamente un mensaje con:
+- Lista de productos ordenados
+- Cantidades de cada producto
+- Precio individual y total
+- Mensaje de confirmación
 
+Formato del mensaje:
+```
+🍕 *Pedido de Pizzería Bella Italia*
+
+• Margherita Clásica x2
+  R$ 91.80
+
+• Coca-Cola Lata x3
+  R$ 24.00
+
+*Total: R$ 115.80*
+
+Por favor, confirme mi pedido y el tiempo de entrega.
+```
+
+## 🔧 Scripts Disponibles
+
+- `npm run dev` - Servidor de desarrollo
+- `npm run build` - Build de producción
+- `npm run preview` - Preview del build
+- `docker-compose up` - Ejecutar con Docker Compose
+
+## 📄 Licencia
+
+Este proyecto está bajo licencia MIT. Libre para uso comercial y personal.
+
+## 🤝 Contribuciones
+
+Las contribuciones son bienvenidas! Por favor:
 1. Fork el proyecto
-2. Crea tu rama de características (`git checkout -b feature/AmazingFeature`)
-3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
-4. Push a la rama (`git push origin feature/AmazingFeature`)
+2. Crea tu rama (`git checkout -b feature/nueva-caracteristica`)
+3. Commit tus cambios (`git commit -m 'Agregar nueva característica'`)
+4. Push a la rama (`git push origin feature/nueva-caracteristica`)
 5. Abre un Pull Request
 
-## Licencia
+## 💡 Soporte
 
-Este proyecto está bajo la licencia MIT.
+Para soporte o consultas:
+- Abrir un issue en GitHub
+- Contactar al desarrollador
+
+---
+
+Hecho con ❤️ para Pizzería Bella Italia
