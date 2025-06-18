@@ -1,124 +1,332 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Colores de pizzería italiana */
+  --primary-red: #c8102e;
+  --primary-green: #00a651;
+  --primary-white: #ffffff;
+  --secondary-yellow: #ffc72c;
+  --dark-bg: #1a1a1a;
+  --light-bg: #f9f9f9;
+  --text-dark: #2c2c2c;
+  --text-light: #666666;
+  --shadow-light: rgba(0, 0, 0, 0.1);
+  --shadow-medium: rgba(0, 0, 0, 0.2);
+  --border-radius: 12px;
+  --transition: all 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--light-bg);
+  color: var(--text-dark);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
 .app {
-  max-width: 1400px;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Hero Section */
+.hero-section {
+  background: linear-gradient(135deg, var(--primary-red) 0%, #a00d26 100%);
+  color: white;
+  padding: 120px 20px 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+.hero-content {
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem;
   text-align: center;
+  position: relative;
+  z-index: 1;
 }
 
-.app-header {
-  margin-bottom: 3rem;
-}
-
-.app-header h1 {
-  margin-bottom: 0.5rem;
-  background: linear-gradient(45deg, #646cff, #535bf2);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.app-header p {
-  font-size: 1.2rem;
-  color: #888;
-}
-
-.filters {
-  margin-bottom: 2rem;
+.hero-title {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 4rem;
+  margin-bottom: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-.filters label {
-  font-weight: 600;
+.pizza-icon {
+  animation: rotate 20s linear infinite;
 }
 
-.filters select {
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  border: 2px solid #646cff;
-  background-color: transparent;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: all 0.3s;
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
-.filters select:hover {
-  background-color: #646cff20;
+.hero-subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  opacity: 0.95;
 }
 
-.products-container {
-  width: 100%;
+.info-badges {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 3rem;
+}
+
+.info-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  backdrop-filter: blur(10px);
+  transition: var(--transition);
+}
+
+.info-badge:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Menu Section */
+.menu-section {
+  padding: 80px 20px;
+  background: white;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  color: var(--primary-red);
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: var(--primary-green);
 }
 
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 2rem;
+  margin-top: 3rem;
+}
+
+/* CTA Section */
+.cta-section {
+  background: linear-gradient(135deg, var(--primary-green) 0%, #008a43 100%);
+  color: white;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.cta-content h3 {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.cta-content p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  opacity: 0.95;
+}
+
+.whatsapp-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: #25d366;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: var(--transition);
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+}
+
+.whatsapp-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+}
+
+.whatsapp-button svg {
+  font-size: 1.5rem;
+}
+
+/* Footer */
+.footer {
+  background: var(--dark-bg);
+  color: white;
+  padding: 60px 20px 20px;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 3rem;
   margin-bottom: 3rem;
 }
 
-.loading-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 50vh;
-  gap: 1rem;
+.footer-section h4 {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--secondary-yellow);
 }
 
-.loader {
-  width: 50px;
-  height: 50px;
-  border: 3px solid #f3f3f3;
-  border-top: 3px solid #646cff;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
+.footer-section p {
+  opacity: 0.8;
+  line-height: 1.8;
 }
 
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-.error-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 50vh;
-  gap: 1rem;
-}
-
-.error-container p {
-  color: #ff6b6b;
-  font-size: 1.2rem;
-}
-
-.error-container button {
-  background-color: #646cff;
-  color: white;
-}
-
-.app-footer {
-  margin-top: 4rem;
+.footer-bottom {
+  text-align: center;
   padding-top: 2rem;
-  border-top: 1px solid #444;
-  color: #888;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  opacity: 0.6;
 }
 
+/* Floating Cart Button */
+.floating-cart-button {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  background: var(--primary-red);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(200, 16, 46, 0.4);
+  z-index: 1000;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: var(--secondary-yellow);
+  color: var(--text-dark);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.loaded .hero-content,
+.loaded .products-grid,
+.loaded .cta-section {
+  animation: fadeIn 0.8s ease-out;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
-  .app {
-    padding: 1rem;
+  .hero-title {
+    font-size: 3rem;
   }
 
-  .app-header h1 {
+  .hero-subtitle {
+    font-size: 1.2rem;
+  }
+
+  .info-badges {
+    gap: 1rem;
+  }
+
+  .info-badge {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .section-title {
     font-size: 2.5rem;
   }
 
   .products-grid {
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 1rem;
+    gap: 1.5rem;
+  }
+
+  .floating-cart-button {
+    width: 50px;
+    height: 50px;
+    bottom: 20px;
+    right: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 2.5rem;
+    flex-direction: column;
+  }
+
+  .products-grid {
+    grid-template-columns: 1fr;
   }
 }

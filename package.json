@@ -1,7 +1,7 @@
 {
-  "name": "fakestore-catalog",
+  "name": "pizzeria-catalog",
   "private": true,
-  "version": "1.0.0",
+  "version": "2.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -11,7 +11,9 @@
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "axios": "^1.6.0"
+    "react-icons": "^5.0.1",
+    "framer-motion": "^11.0.0",
+    "zustand": "^4.5.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",
