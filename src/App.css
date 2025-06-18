@@ -28,6 +28,9 @@ body {
   color: var(--text-dark);
   line-height: 1.6;
   overflow-x: hidden;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 .app {
@@ -160,6 +163,8 @@ body {
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 2rem;
   margin-top: 3rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* CTA Section */
@@ -319,8 +324,9 @@ body {
   }
 
   .products-grid {
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    padding: 0 5px;
   }
 
   .floating-cart-button {
@@ -339,7 +345,21 @@ body {
 
   .products-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
+    gap: 0.75rem;
+    padding: 0 5px;
+  }
+
+  .hero-section {
+    padding: 80px 10px 40px;
+  }
+
+  .menu-section {
+    padding: 40px 10px;
+  }
+
+  .container {
+    max-width: 100%;
+    padding: 0 10px;
   }
 }
 
@@ -406,21 +426,8 @@ body {
     padding-bottom: 80px;
   }
 
-  .hero-section {
-    padding: 100px 15px 60px;
-  }
-
-  .menu-section {
-    padding: 40px 15px 60px;
-  }
-
   .desktop-only {
     display: none !important;
-  }
-
-  .products-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
   }
 
   .category-filter {
@@ -429,6 +436,7 @@ body {
 
   .cta-section {
     margin-bottom: 20px;
+    padding: 40px 10px;
   }
 }
 
