@@ -36,6 +36,8 @@ body {
 .app {
   min-height: 100vh;
   position: relative;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 /* Hero Section */
@@ -131,6 +133,8 @@ body {
 .menu-section {
   padding: 80px 20px;
   background: white;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 .container {
@@ -323,10 +327,25 @@ body {
     font-size: 2.5rem;
   }
 
-  .products-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
+  .menu-section {
+    padding: 40px 10px;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .container {
     padding: 0 5px;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .products-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    overflow: hidden;
   }
 
   .floating-cart-button {
@@ -344,9 +363,10 @@ body {
   }
 
   .products-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.75rem;
-    padding: 0 5px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem;
+    padding: 0;
+    margin: 0;
   }
 
   .hero-section {
@@ -424,6 +444,7 @@ body {
 @media (max-width: 768px) {
   .app {
     padding-bottom: 80px;
+    overflow-x: hidden;
   }
 
   .desktop-only {
@@ -438,6 +459,17 @@ body {
     margin-bottom: 20px;
     padding: 40px 10px;
   }
+
+  .menu-section {
+    padding: 40px 10px;
+    overflow-x: hidden;
+  }
+
+  .container {
+    width: 100%;
+    padding: 0 10px;
+    overflow-x: hidden;
+  }
 }
 
 /* Product card badge */
@@ -450,4 +482,17 @@ body {
   font-size: 0.8rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
+}
+
+/* Mobile grid fix */
+@media (max-width: 768px) {
+  .products-grid > * {
+    max-width: 100%;
+    overflow: hidden;
+  }
+  
+  .product-card {
+    max-width: 100%;
+    width: 100%;
+  }
 }

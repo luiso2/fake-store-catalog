@@ -1,9 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap');
-
+/* Global reset and prevent horizontal scroll */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+html {
+  overflow-x: hidden;
+  width: 100%;
 }
 
 body {
@@ -13,10 +17,15 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
 }
 
 #root {
   min-height: 100vh;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 /* Scrollbar personalizada */
@@ -46,4 +55,17 @@ body {
 ::-moz-selection {
   background-color: #c8102e;
   color: white;
+}
+
+/* Mobile specific overflow fixes */
+@media (max-width: 768px) {
+  body {
+    position: relative;
+    overflow-x: hidden;
+  }
+  
+  #root {
+    position: relative;
+    overflow-x: hidden;
+  }
 }
