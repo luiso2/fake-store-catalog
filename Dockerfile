@@ -32,4 +32,5 @@ COPY --from=build /app/dist ./dist
 EXPOSE 3000
 
 # Start the application
-CMD ["serve", "-s", "dist", "-l", "3000"]
+# Use -l tcp://0.0.0.0:3000 to listen on all interfaces
+CMD ["serve", "-s", "dist", "-l", "tcp://0.0.0.0:3000"]
