@@ -7,12 +7,14 @@ import Header from './components/Header'
 import CategoryFilter from './components/CategoryFilter'
 import ProductCard from './components/ProductCard'
 import Cart from './components/Cart'
+import BottomNav from './components/BottomNav'
 import pizzaData from './data/pizzaData'
 import './App.css'
 
 function App() {
   const [selectedCategory, setSelectedCategory] = useState('all')
   const [isCartOpen, setIsCartOpen] = useState(false)
+  const [showMobileMenu, setShowMobileMenu] = useState(false)
   const { cart, getTotalItems } = useStore()
 
   const categories = ['all', 'pizzas', 'bebidas', 'postres', 'entradas']
@@ -25,6 +27,24 @@ function App() {
     // Animación de entrada
     document.body.classList.add('loaded')
   }, [])
+
+  const handleNavigation = (category) => {
+    if (category === 'cart') {
+      setIsCartOpen(true)
+    } else if (category === 'menu') {
+      setShowMobileMenu(true)
+      setSelectedCategory('all')
+    } else if (category === 'profile') {
+      // Por ahora solo muestra un alert, puedes implementar la página de perfil
+      alert('Sección de perfil en desarrollo')
+    } else if (category === 'home') {
+      setSelectedCategory('all')
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    } else {
+      setSelectedCategory(category)
+      setShowMobileMenu(false)
+    }
+  }
 
   return (
     <div className="app">
@@ -118,7 +138,7 @@ function App() {
         </div>
       </section>
 
-      <footer className="footer">
+      <footer className="footer desktop-only">
         <div className="footer-content">
           <div className="footer-section">
             <h4>Pizzería Bella Italia</h4>
@@ -143,9 +163,10 @@ function App() {
         {isCartOpen && <Cart onClose={() => setIsCartOpen(false)} />}
       </AnimatePresence>
 
+      {/* Floating cart button for desktop */}
       {getTotalItems() > 0 && !isCartOpen && (
         <motion.button 
-          className="floating-cart-button"
+          className="floating-cart-button desktop-only"
           onClick={() => setIsCartOpen(true)}
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
@@ -156,6 +177,51 @@ function App() {
           <span className="cart-badge">{getTotalItems()}</span>
         </motion.button>
       )}
+
+      {/* Bottom Navigation for mobile */}
+      <BottomNav 
+        activeCategory={selectedCategory}
+        onCategoryChange={handleNavigation}
+        cartItemsCount={getTotalItems()}
+      />
+
+      {/* Mobile menu modal */}
+      <AnimatePresence>
+        {showMobileMenu && (
+          <motion.div 
+            className="mobile-menu-overlay"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setShowMobileMenu(false)}
+          >
+            <motion.div 
+              className="mobile-menu"
+              initial={{ y: '100%' }}
+              animate={{ y: 0 }}
+              exit={{ y: '100%' }}
+              transition={{ type: 'spring', damping: 25 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <h3>Categorías</h3>
+              <div className="mobile-menu-categories">
+                {categories.slice(1).map(category => (
+                  <button
+                    key={category}
+                    className="mobile-menu-item"
+                    onClick={() => {
+                      setSelectedCategory(category)
+                      setShowMobileMenu(false)
+                    }}
+                  >
+                    {category.charAt(0).toUpperCase() + category.slice(1)}
+                  </button>
+                ))}
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   )
 }

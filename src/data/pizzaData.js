@@ -1,4 +1,18 @@
 const pizzaData = {
+  toppings: [
+    { id: 'extra-cheese', name: 'Queso Extra', price: 8.00 },
+    { id: 'pepperoni', name: 'Pepperoni Extra', price: 10.00 },
+    { id: 'mushrooms', name: 'Champiñones', price: 6.00 },
+    { id: 'olives', name: 'Aceitunas', price: 5.00 },
+    { id: 'bacon', name: 'Bacon', price: 12.00 },
+    { id: 'onions', name: 'Cebolla', price: 4.00 },
+    { id: 'peppers', name: 'Pimientos', price: 6.00 },
+    { id: 'ham', name: 'Jamón Extra', price: 10.00 },
+    { id: 'pineapple', name: 'Piña Extra', price: 6.00 },
+    { id: 'garlic', name: 'Ajo', price: 3.00 },
+    { id: 'basil', name: 'Albahaca Fresca', price: 4.00 },
+    { id: 'tomatoes', name: 'Tomate Cherry', price: 5.00 }
+  ],
   products: [
     // Pizzas
     {
@@ -9,7 +23,8 @@ const pizzaData = {
       image: "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=500&q=80",
       category: "pizzas",
       popular: true,
-      size: "Grande (35cm)"
+      size: "Grande (35cm)",
+      allowToppings: true
     },
     {
       id: 2,
@@ -19,7 +34,8 @@ const pizzaData = {
       image: "https://images.unsplash.com/photo-1628840042765-356cda07504e?w=500&q=80",
       category: "pizzas",
       popular: true,
-      size: "Grande (35cm)"
+      size: "Grande (35cm)",
+      allowToppings: true
     },
     {
       id: 3,
@@ -28,7 +44,8 @@ const pizzaData = {
       price: 56.90,
       image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500&q=80",
       category: "pizzas",
-      size: "Grande (35cm)"
+      size: "Grande (35cm)",
+      allowToppings: true
     },
     {
       id: 4,
@@ -37,7 +54,8 @@ const pizzaData = {
       price: 49.90,
       image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=500&q=80",
       category: "pizzas",
-      size: "Grande (35cm)"
+      size: "Grande (35cm)",
+      allowToppings: true
     },
     {
       id: 5,
@@ -47,7 +65,8 @@ const pizzaData = {
       image: "https://images.unsplash.com/photo-1571407970349-bc81e7e96d47?w=500&q=80",
       category: "pizzas",
       vegetarian: true,
-      size: "Grande (35cm)"
+      size: "Grande (35cm)",
+      allowToppings: true
     },
     {
       id: 6,
@@ -56,7 +75,8 @@ const pizzaData = {
       price: 54.90,
       image: "https://images.unsplash.com/photo-1594007654729-407eedc4be65?w=500&q=80",
       category: "pizzas",
-      size: "Grande (35cm)"
+      size: "Grande (35cm)",
+      allowToppings: true
     },
     {
       id: 7,
@@ -66,7 +86,8 @@ const pizzaData = {
       image: "https://images.unsplash.com/photo-1600628421055-4d30de868b8f?w=500&q=80",
       category: "pizzas",
       popular: true,
-      size: "Grande (35cm)"
+      size: "Grande (35cm)",
+      allowToppings: true
     },
     {
       id: 8,
@@ -75,7 +96,8 @@ const pizzaData = {
       price: 55.90,
       image: "https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?w=500&q=80",
       category: "pizzas",
-      size: "Grande (35cm)"
+      size: "Grande (35cm)",
+      allowToppings: true
     },
     
     // Bebidas

@@ -1,205 +1,202 @@
-# Pizzería Bella Italia - Catálogo Digital
+# Pizzería Bella Italia - Catálogo Digital Premium
 
-Un catálogo digital moderno y elegante para pizzería, construido con React, Vite y diseñado para facilitar pedidos a través de WhatsApp.
+Un catálogo digital moderno y elegante para pizzería con sistema de personalización de pizzas, construido con React, Vite y optimizado para móviles.
 
-## 🍕 Características
+## 🍕 Nuevas Características v2.0
 
-- **Catálogo Interactivo**: Navegación fluida por categorías (Pizzas, Bebidas, Postres, Entradas)
-- **Carrito de Compras**: Sistema completo con gestión de cantidades
-- **Integración WhatsApp**: Los pedidos se envían directamente por WhatsApp con el detalle completo
-- **Diseño Responsive**: Optimizado para móviles, tablets y desktop
-- **Animaciones Suaves**: Construido con Framer Motion para una experiencia premium
-- **Tema Italiano**: Colores y diseño inspirados en la bandera italiana
+### 1. **Sistema de Personalización de Pizzas**
+- Modal interactivo para agregar toppings/ingredientes extra
+- 12 opciones de ingredientes adicionales
+- Cálculo automático del precio con extras
+- Vista previa del total antes de agregar al carrito
+
+### 2. **Bottom Navigation Bar (Móvil)**
+- Navegación fácil entre categorías
+- Indicador visual de sección activa
+- Badge con contador de items en el carrito
+- Acceso rápido a todas las secciones
+
+### 3. **Grid Optimizado para Móviles**
+- Vista de 2 columnas en dispositivos móviles
+- Mejor aprovechamiento del espacio
+- Cards adaptados para pantallas pequeñas
+
+### 4. **Experiencia Mejorada**
+- Animaciones suaves con Framer Motion
+- Estados de carga y vacío
+- Feedback visual al agregar productos
+- Modal de categorías en móvil
 
 ## 🚀 Tecnologías
 
 - **React 18** - Framework de UI
 - **Vite** - Build tool ultrarrápido
-- **Framer Motion** - Animaciones fluidas
-- **Zustand** - Estado global simple
+- **Framer Motion** - Animaciones profesionales
+- **Zustand** - Gestión de estado
 - **React Icons** - Iconografía consistente
-- **Docker** - Containerización lista para producción
+- **Docker** - Containerización
 
-## 📱 Funcionalidades
+## 📱 Funcionalidades Principales
 
-### Para Clientes
-- Ver menú completo con fotos y descripciones
-- Filtrar por categorías
-- Agregar productos al carrito
-- Modificar cantidades
-- Realizar pedido por WhatsApp con un click
+### Sistema de Pedidos
+- ✅ Catálogo completo con 4 categorías
+- ✅ Personalización de pizzas con ingredientes extra
+- ✅ Carrito de compras con gestión de cantidades
+- ✅ Integración directa con WhatsApp
+- ✅ Cálculo automático de totales
 
-### Para el Negocio
-- Fácil actualización de productos
-- Sin necesidad de procesar pagos
-- Pedidos llegan directamente a WhatsApp
-- Diseño profesional que mejora la imagen del negocio
+### Experiencia de Usuario
+- ✅ Diseño 100% responsive
+- ✅ Bottom Navigation en móviles
+- ✅ Grid de 2 columnas en móvil
+- ✅ Animaciones profesionales
+- ✅ Tema italiano (colores de la bandera)
 
-## 🛠️ Instalación Local
+## 🛠️ Instalación
 
-1. **Clonar el repositorio**
 ```bash
+# Clonar repositorio
 git clone [tu-repositorio]
 cd easy-panel-sample
-```
 
-2. **Instalar dependencias**
-```bash
+# Instalar dependencias
 npm install
-```
 
-3. **Configurar variables de entorno**
-```bash
-cp .env.example .env
-```
-
-4. **Ejecutar en desarrollo**
-```bash
+# Ejecutar en desarrollo
 npm run dev
+
+# Build de producción
+npm run build
 ```
 
 ## 🐳 Docker
 
-### Construir imagen
 ```bash
+# Construir imagen
 docker build -t pizzeria-bella-italia .
-```
 
-### Ejecutar contenedor
-```bash
+# Ejecutar
 docker run -p 3000:3000 pizzeria-bella-italia
 ```
 
-## 📦 Despliegue en EasyPanel
+## 📦 Estructura del Proyecto
 
-1. **Preparar el código**
-   - Hacer push a GitHub
-   - Asegurarse que el Dockerfile esté en la raíz
+```
+src/
+├── components/
+│   ├── Header.jsx         # Navegación principal
+│   ├── CategoryFilter.jsx # Filtros de categoría
+│   ├── ProductCard.jsx    # Tarjeta de producto
+│   ├── Cart.jsx          # Carrito de compras
+│   ├── ToppingsModal.jsx # Modal de personalización
+│   └── BottomNav.jsx     # Navegación móvil
+├── data/
+│   └── pizzaData.js      # Productos y toppings
+├── store/
+│   └── useStore.js       # Estado global
+└── App.jsx               # Componente principal
+```
 
-2. **En EasyPanel**
-   - Crear nueva aplicación
-   - Conectar repositorio GitHub
-   - Puerto: 3000
-   - Variables de entorno: No requeridas
+## 🎨 Personalización
 
-3. **Deploy**
-   - EasyPanel detectará el Dockerfile automáticamente
-   - Click en "Deploy"
-
-## 📝 Personalización
-
-### Cambiar datos del negocio
-
-Editar `src/App.jsx`:
-- Nombre del negocio
-- Número de WhatsApp
-- Horarios
-- Información de contacto
-
-### Modificar productos
+### 1. Cambiar Toppings/Ingredientes
 
 Editar `src/data/pizzaData.js`:
-- Agregar/eliminar productos
-- Cambiar precios
-- Actualizar descripciones
-- Modificar categorías
+```javascript
+toppings: [
+  { id: 'extra-cheese', name: 'Queso Extra', price: 8.00 },
+  // Agregar más ingredientes aquí
+]
+```
 
-### Cambiar colores
+### 2. Modificar Número de WhatsApp
+
+Editar `src/components/Cart.jsx` (línea 39):
+```javascript
+const phoneNumber = '5541998908495' // Tu número
+```
+
+### 3. Cambiar Colores del Tema
 
 Editar `src/App.css`:
 ```css
 :root {
-  --primary-red: #c8102e;    /* Rojo italiano */
-  --primary-green: #00a651;  /* Verde italiano */
-  --secondary-yellow: #ffc72c; /* Amarillo acento */
+  --primary-red: #c8102e;
+  --primary-green: #00a651;
+  --secondary-yellow: #ffc72c;
 }
 ```
 
-## 🏗️ Estructura del Proyecto
+### 4. Agregar/Modificar Productos
 
-```
-pizzeria-bella-italia/
-├── src/
-│   ├── components/
-│   │   ├── Header.jsx         # Navegación principal
-│   │   ├── CategoryFilter.jsx # Filtros de categoría
-│   │   ├── ProductCard.jsx    # Tarjeta de producto
-│   │   └── Cart.jsx          # Carrito de compras
-│   ├── data/
-│   │   └── pizzaData.js      # Datos de productos
-│   ├── store/
-│   │   └── useStore.js       # Estado global (Zustand)
-│   ├── App.jsx               # Componente principal
-│   └── App.css               # Estilos principales
-├── public/
-│   ├── pizza-icon.svg        # Favicon
-│   └── pizza-hero.svg        # Imagen hero
-├── Dockerfile                # Configuración Docker
-├── package.json             # Dependencias
-└── vite.config.js          # Configuración Vite
+Editar `src/data/pizzaData.js`:
+```javascript
+{
+  id: 1,
+  name: "Pizza Margherita",
+  description: "Descripción",
+  price: 45.90,
+  category: "pizzas",
+  allowToppings: true // Permite personalización
+}
 ```
 
-## 🎨 Capturas de Pantalla
+## 📱 Capturas de Pantalla
 
 ### Desktop
 - Hero section con información del negocio
-- Grid de productos responsivo
+- Grid de productos 3-4 columnas
 - Carrito lateral deslizante
+- Modal de personalización centrado
 
 ### Mobile
-- Diseño optimizado para táctil
-- Botón flotante de carrito
-- Navegación simplificada
+- Grid de 2 columnas
+- Bottom Navigation fijo
+- Modal de categorías
+- Carrito a pantalla completa
 
-## 📞 Integración WhatsApp
+## 🚀 Deploy en EasyPanel
 
-El sistema genera automáticamente un mensaje con:
-- Lista de productos ordenados
-- Cantidades de cada producto
-- Precio individual y total
-- Mensaje de confirmación
-
-Formato del mensaje:
-```
-🍕 *Pedido de Pizzería Bella Italia*
-
-• Margherita Clásica x2
-  R$ 91.80
-
-• Coca-Cola Lata x3
-  R$ 24.00
-
-*Total: R$ 115.80*
-
-Por favor, confirme mi pedido y el tiempo de entrega.
+1. **Push a GitHub**
+```bash
+git add .
+git commit -m "Update: Pizza customization and mobile navigation"
+git push origin main
 ```
 
-## 🔧 Scripts Disponibles
+2. **En EasyPanel**
+- Redeploy la aplicación
+- Puerto: 3000
+- No requiere variables de entorno adicionales
 
-- `npm run dev` - Servidor de desarrollo
-- `npm run build` - Build de producción
-- `npm run preview` - Preview del build
-- `docker-compose up` - Ejecutar con Docker Compose
+## 📊 Mejoras de Performance
 
-## 📄 Licencia
+- Lazy loading de imágenes
+- Code splitting por rutas
+- Optimización de bundle
+- Caché de assets estáticos
+- Animaciones con GPU
 
-Este proyecto está bajo licencia MIT. Libre para uso comercial y personal.
+## 🔄 Actualizaciones Futuras
+
+- [ ] Sistema de cupones de descuento
+- [ ] Múltiples tamaños de pizza
+- [ ] Historial de pedidos
+- [ ] Notificaciones push
+- [ ] PWA support
 
 ## 🤝 Contribuciones
 
-Las contribuciones son bienvenidas! Por favor:
 1. Fork el proyecto
 2. Crea tu rama (`git checkout -b feature/nueva-caracteristica`)
-3. Commit tus cambios (`git commit -m 'Agregar nueva característica'`)
+3. Commit cambios (`git commit -m 'Add: nueva característica'`)
 4. Push a la rama (`git push origin feature/nueva-caracteristica`)
 5. Abre un Pull Request
 
-## 💡 Soporte
+## 📄 Licencia
 
-Para soporte o consultas:
-- Abrir un issue en GitHub
-- Contactar al desarrollador
+MIT License - Libre para uso comercial y personal
 
 ---
 
-Hecho con ❤️ para Pizzería Bella Italia
+Hecho con ❤️ para Pizzería Bella Italia 🍕

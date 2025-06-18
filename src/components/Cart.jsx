@@ -17,10 +17,19 @@ const Cart = ({ onClose }) => {
     
     cart.forEach(item => {
       message += `• ${item.name} x${item.quantity}\n`
-      message += `  R$ ${(item.price * item.quantity).toFixed(2)}\n\n`
+      
+      // Agregar toppings si existen
+      if (item.selectedToppings && item.selectedToppings.length > 0) {
+        message += `  Adicionales: ${item.selectedToppings.map(t => t.name).join(', ')}\n`
+      }
+      
+      const itemTotal = (item.totalPrice || item.price) * item.quantity
+      message += `  R$ ${itemTotal.toFixed(2)}\n\n`
     })
     
-    message += `*Total: R$ ${total.toFixed(2)}*\n\n`
+    message += `*Subtotal: R$ ${total.toFixed(2)}*\n`
+    message += `*Entrega: R$ 5.00*\n`
+    message += `*Total: R$ ${(total + 5).toFixed(2)}*\n\n`
     message += 'Por favor, confirme mi pedido y el tiempo de entrega.'
 
     // Encode message for URL
@@ -69,7 +78,7 @@ const Cart = ({ onClose }) => {
               <div className="cart-items">
                 {cart.map((item) => (
                   <motion.div 
-                    key={item.id} 
+                    key={item.cartItemId} 
                     className="cart-item"
                     layout
                     initial={{ opacity: 0, x: 20 }}
@@ -79,20 +88,27 @@ const Cart = ({ onClose }) => {
                     <img src={item.image} alt={item.name} className="cart-item-image" />
                     <div className="cart-item-info">
                       <h4>{item.name}</h4>
-                      <p className="cart-item-price">R$ {item.price.toFixed(2)}</p>
+                      {item.selectedToppings && item.selectedToppings.length > 0 && (
+                        <p className="cart-item-toppings">
+                          + {item.selectedToppings.map(t => t.name).join(', ')}
+                        </p>
+                      )}
+                      <p className="cart-item-price">
+                        R$ {(item.totalPrice || item.price).toFixed(2)}
+                      </p>
                     </div>
                     <div className="quantity-controls">
-                      <button onClick={() => updateQuantity(item.id, item.quantity - 1)}>
+                      <button onClick={() => updateQuantity(item.cartItemId, item.quantity - 1)}>
                         <FiMinus />
                       </button>
                       <span>{item.quantity}</span>
-                      <button onClick={() => updateQuantity(item.id, item.quantity + 1)}>
+                      <button onClick={() => updateQuantity(item.cartItemId, item.quantity + 1)}>
                         <FiPlus />
                       </button>
                     </div>
                     <button 
                       className="remove-button"
-                      onClick={() => removeFromCart(item.id)}
+                      onClick={() => removeFromCart(item.cartItemId)}
                     >
                       <FiX />
                     </button>
